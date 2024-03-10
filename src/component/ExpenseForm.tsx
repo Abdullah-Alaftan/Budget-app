@@ -1,38 +1,35 @@
-// rfc - to generate the template react functional component
-
 import React from "react";
 import { Button } from "./Button";
 
-
-type IncomeFormProps = {
+type ExpenseFormProps = {
   handleChangeSource: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangeAmount: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangeDate: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export default function Incomeform({
+export default function Expenseform({
   handleChangeSource,
-  handleSubmit,
   handleChangeAmount,
   handleChangeDate,
-}: IncomeFormProps) {
+  handleSubmit,
+}: ExpenseFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name="resourse"
-        placeholder="Salary"
+        name="expenseSource"
+        placeholder="Expense Source"
         onChange={handleChangeSource}
       />
       <input
         type="text"
-        name="amount"
-        placeholder="how much?"
+        name="expenseAmount"
+        placeholder="Expense Amount"
         onChange={handleChangeAmount}
       />
-      <input type="Date" name="Date" onChange={handleChangeDate} />
-      <Button label="add income" />
+      <input type="Date" name="expenseDate" onChange={handleChangeDate} />
+      <Button label="add expense" />
     </form>
   );
 }
