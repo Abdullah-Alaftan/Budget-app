@@ -7,7 +7,7 @@ type Expense = {
   date: string;
 };
 
-export function Expensewrapper() {
+export function ExpenseWrapper() {
   const [Expenses, setExpenses] = useState<Expense[]>([]);
 
   const [expenseAmount, setExpenseAmount] = useState("");

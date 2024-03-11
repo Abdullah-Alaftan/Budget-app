@@ -1,17 +1,20 @@
-
-import logo from "./logo.svg";
 import "./App.css";
-
-import { log } from "console";
+import { useState } from "react";
+import { ExpenseWrapper } from "./component/Expensewrapper";
 import { Incomewrapper } from "./component/Incomewrapper";
-import { Expensewrapper } from "./component/Expensewrapper";
+import SavingWrapper from "./component/SavingWrapper";
 
 function App() {
+  const [savingsTarget, setSavingTarget] = useState(0);
+  const [currentSavings] = useState(0); 
+  console.log("savingsTarget", savingsTarget);
+  
   return (
     <div className="app">
       <h1>Budget App</h1>
       <Incomewrapper />
-      <Expensewrapper />
+      <ExpenseWrapper />
+      <SavingWrapper savingsTarget={savingsTarget} currentSavings={currentSavings} setSavingTarget={setSavingTarget}/>
     </div>
   );
 }

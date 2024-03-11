@@ -18,6 +18,7 @@ export default function Incomeform({
   handleChangeDate,
 }: IncomeFormProps) {
   return (
+
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -34,5 +35,6 @@ export default function Incomeform({
       <input type="Date" name="Date" onChange={handleChangeDate} />
       <Button label="add income" />
     </form>
+    
   );
 }
