@@ -13,6 +13,7 @@ export function Incomewrapper() {
   const [amount, setAmount] = useState("");
   const [source, setSource] = useState("");
   const [date, setDate] = useState("");
+  console.log('date:', date)
 
   const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("chaning...", e.target.value);
