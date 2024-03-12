@@ -17,7 +17,7 @@ function App() {
       <Incomewrapper />
       <ExpenseWrapper />
       <SavingWrapper savingsTarget={savingsTarget} currentSavings={currentSavings} setSavingTarget={setSavingTarget}/>
-      <TransferAccountWrapper savingsAccount={savingsAccount}  setSavingAccount={setSavingAccount}/>
+      <TransferAccountWrapper savingsAccount={savingsAccount} currentSavings={currentSavings} setSavingAccount={setSavingAccount}/>
     </div>
   );
 }

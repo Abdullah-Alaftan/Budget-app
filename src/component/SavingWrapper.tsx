@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 type SavingWrapperProps ={
     savingsTarget: number,
-    currentSavings: number, 
+    currentSavings: number, // Add this line
     setSavingTarget: (key: number) => void
 }
 
@@ -9,9 +9,10 @@ export default function SavingWrapper({savingsTarget, currentSavings, setSavingT
   
   const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
     const{valueAsNumber}= e.target
-   
+    if (!isNaN(valueAsNumber)) {
       setSavingTarget(valueAsNumber);
     }
+  }
 
   return (
     <div>
@@ -23,7 +24,7 @@ export default function SavingWrapper({savingsTarget, currentSavings, setSavingT
           placeholder="Add amount"
           onChange={handleChange}
         />
-        <button type="reset">Reset</button>
+        <button type="submit">Reset</button>
         <p>Current savings: {currentSavings}</p> {}
         <p> Target: {savingsTarget}</p>
       </form>
