@@ -8,7 +8,7 @@ import TransferAccountWrapper from "./component/TransferrAccountWrapper";
 function App() {
   const [savingsTarget, setSavingTarget] = useState(0);
   const [currentSavings] = useState(0); 
-  const [savingsAccount, setSavingAccount] = useState(0); // renamed savingAccountWrapper to savingsAccount
+  const [savingsAccount, setSavingAccount] = useState(0); 
   console.log('savingsAccount:', savingsAccount)
 
   return (
