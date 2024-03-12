@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 type SavingWrapperProps ={
     savingsTarget: number,
-    currentSavings: number, // Add this line
+    currentSavings: number, 
     setSavingTarget: (key: number) => void
 }
 
