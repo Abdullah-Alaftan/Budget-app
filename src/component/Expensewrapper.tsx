@@ -1,24 +1,26 @@
 import { useState } from "react";
 import Expenseform from "./ExpenseForm";
 
-type Expense = {
+export type Expense = {
   source: string;
   amount: number;
   date: string;
 };
 
-export function ExpenseWrapper() {
-  const [Expenses, setExpenses] = useState<Expense[]>([]);
-
+export function ExpenseWrapper({ setExpenses, Expenses }) {
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseSource, setExpenseSource] = useState("");
   const [expenseDate, setExpenseDate] = useState("");
 
-  const handleExpenseChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleExpenseChangeSource = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setExpenseSource(e.target.value);
   };
 
-  const handleExpenseChangeAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleExpenseChangeAmount = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setExpenseAmount(e.target.value);
   };
 
