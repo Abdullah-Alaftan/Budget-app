@@ -6,13 +6,16 @@ export type Income = {
   amount: number;
   date: string;
 };
-export function Incomewrapper({ setIncomes, Incomes }) {
-  console.log("Incomes", { Incomes }, "setIncomes", { setIncomes });
 
+type IncomewrapperProps = {
+  setIncomes: React.Dispatch<React.SetStateAction<Income[]>>;
+  Incomes: Income[];
+};
+
+export function Incomewrapper({ setIncomes, Incomes }: IncomewrapperProps) {
   const [amount, setAmount] = useState("");
   const [source, setSource] = useState("");
   const [date, setDate] = useState("");
-  console.log("date:", date);
 
   const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("chaning...", e.target.value);

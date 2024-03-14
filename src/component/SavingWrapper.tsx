@@ -1,18 +1,21 @@
 import React, { ChangeEvent } from "react";
-type SavingWrapperProps ={
-    savingsTarget: number,
-    currentSavings: number, 
-    setSavingTarget: (key: number) => void
-}
+type SavingWrapperProps = {
+  savingsTarget: number;
+  currentSavings: number;
+  setSavingTarget: (key: number) => void;
+};
 
-export default function SavingWrapper({savingsTarget, currentSavings, setSavingTarget}:SavingWrapperProps) {
-  
-  const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
-    const{valueAsNumber}= e.target
+export default function SavingWrapper({
+  savingsTarget,
+  currentSavings,
+  setSavingTarget,
+}: SavingWrapperProps) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { valueAsNumber } = e.target;
     if (!isNaN(valueAsNumber)) {
       setSavingTarget(valueAsNumber);
     }
-  }
+  };
 
   return (
     <div>

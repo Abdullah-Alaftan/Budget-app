@@ -1,8 +1,5 @@
-// rfc - to generate the template react functional component
-
 import React from "react";
 import { Button } from "./Button";
-
 
 type IncomeFormProps = {
   handleChangeSource: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,12 +15,11 @@ export default function Incomeform({
   handleChangeDate,
 }: IncomeFormProps) {
   return (
-
     <form onSubmit={handleSubmit}>
       <input
         type="text"
         name="resourse"
-        placeholder="Salary"
+        placeholder=""
         onChange={handleChangeSource}
       />
       <input
@@ -35,6 +31,5 @@ export default function Incomeform({
       <input type="Date" name="Date" onChange={handleChangeDate} />
       <Button label="add income" />
     </form>
-    
   );
 }

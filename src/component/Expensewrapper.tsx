@@ -7,7 +7,12 @@ export type Expense = {
   date: string;
 };
 
-export function ExpenseWrapper({ setExpenses, Expenses }) {
+type ExpenseWrapperProps = {
+    Expenses  : Expense[], 
+setExpenses: React.Dispatch<React.SetStateAction<Expense[]>>
+
+}
+export function ExpenseWrapper({ setExpenses, Expenses } :ExpenseWrapperProps ) {
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseSource, setExpenseSource] = useState("");
   const [expenseDate, setExpenseDate] = useState("");

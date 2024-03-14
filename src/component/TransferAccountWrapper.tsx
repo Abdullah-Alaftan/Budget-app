@@ -1,26 +1,32 @@
 import React, { ChangeEvent } from "react";
-type AccountWrapperProps = {
+
+type TransferAccountWrapperProps = {
+  setTransferAccount: React.Dispatch<React.SetStateAction<number>>;
+  balance: number;
   savingsAccount: number;
   currentSavings: number;
-  setSavingAccount: (key: number) => void;
+  setSavingAccount: React.Dispatch<React.SetStateAction<number>>;
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export default function AccountWrapper({
+export function TransferAccountWrapper({
+  setTransferAccount,
+  balance,
   savingsAccount,
   currentSavings,
   setSavingAccount,
-}: AccountWrapperProps) {
+  handleSubmit,
+}: TransferAccountWrapperProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { valueAsNumber } = e.target;
-
-    setSavingAccount(valueAsNumber);
+    setTransferAccount(valueAsNumber);
   };
-  
+
   return (
     <div>
-      <form>
-        <p>current balance {currentSavings}</p> {}
+      <form onSubmit={handleSubmit}>
         <p>Transfer to Saving Account</p>
+        <p>current balance {balance}</p>
         <input
           type="number"
           name="resourse"
