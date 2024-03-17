@@ -22,13 +22,17 @@ function App() {
     (acc, curr) => acc + Number(curr.amount),
     0
   );
+
   const handleTransferAmount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setCurrentSaving((prev) => prev + transferAccount);
   };
 
-  const balance = totalIncomes - totalExpenses;
-  console.log("transferAccount:", transferAccount);
+  const balance = totalIncomes - totalExpenses - currentSavings;
+
+  const progress =
+    savingsTarget > 0 ? (currentSavings / savingsTarget) * 100 : 0;
+  console.log("progress:", progress + "%");
 
   return (
     <div className="app">
@@ -39,6 +43,8 @@ function App() {
         savingsTarget={savingsTarget}
         currentSavings={currentSavings}
         setSavingTarget={setSavingTarget}
+        setCurrentSaving={setCurrentSaving}
+        progress={progress}
       />
       <TransferAccountWrapper
         setTransferAccount={setTransferAccount}

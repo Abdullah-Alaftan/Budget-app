@@ -19,7 +19,7 @@ export default function Incomeform({
       <input
         type="text"
         name="resourse"
-        placeholder=""
+        placeholder="what is the income?"
         onChange={handleChangeSource}
       />
       <input

@@ -19,7 +19,7 @@ export default function Expenseform({
       <input
         type="text"
         name="expenseSource"
-        placeholder="Expense Source"
+        placeholder=" what is the expense?"
         onChange={handleChangeSource}
       />
       <input

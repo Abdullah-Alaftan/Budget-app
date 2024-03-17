@@ -26,7 +26,7 @@ export function TransferAccountWrapper({
     <div>
       <form onSubmit={handleSubmit}>
         <p>Transfer to Saving Account</p>
-        <p>current balance {balance}</p>
+        <p>balance {balance}</p>
         <input
           type="number"
           name="resourse"
