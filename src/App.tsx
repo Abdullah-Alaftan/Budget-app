@@ -1,9 +1,8 @@
-import "./App.css";
-import { useState } from "react";
-import { Expense, ExpenseWrapper } from "./component/Expensewrapper";
+import React, { useState } from "react";
 import SavingWrapper from "./component/SavingWrapper";
 import { Income, Incomewrapper } from "./component/Incomewrapper";
 import { TransferAccountWrapper } from "./component/TransferAccountWrapper";
+import { Expense, Expensewrapper } from "./component/Expensewrapper";
 
 function App() {
   const [savingsTarget, setSavingTarget] = useState(0);
@@ -28,17 +27,31 @@ function App() {
     setCurrentSaving((prev) => prev + transferAccount);
   };
 
+  const handleDeleteIncome = (id: number) => {
+    setIncomes(Incomes.filter((Income) => Income.id !== id));
+  };
+
+  const handleDeleteExpense = (id: number) => {
+    setExpenses(Expenses.filter((Expense) => Expense.id !== id));
+  };
+
   const balance = totalIncomes - totalExpenses - currentSavings;
 
   const progress =
     savingsTarget > 0 ? (currentSavings / savingsTarget) * 100 : 0;
-  console.log("progress:", progress + "%");
-
   return (
     <div className="app">
       <h1 className="header">Budget App</h1>
-      <Incomewrapper Incomes={Incomes} setIncomes={setIncomes} />
-      <ExpenseWrapper Expenses={Expenses} setExpenses={setExpenses} />
+      <Incomewrapper
+        Incomes={Incomes}
+        setIncomes={setIncomes}
+        handleDelete={handleDeleteIncome}
+      />
+      <Expensewrapper
+        Expenses={Expenses}
+        setExpenses={setExpenses}
+        handleDelete={handleDeleteExpense}
+      />
       <SavingWrapper
         savingsTarget={savingsTarget}
         currentSavings={currentSavings}
@@ -57,5 +70,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

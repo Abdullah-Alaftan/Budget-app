@@ -1,17 +1,25 @@
 import { useState } from "react";
 import Expenseform from "./ExpenseForm";
+import { ListItems } from "./ListItems";
 
 export type Expense = {
+  id: number;
   source: string;
   amount: number;
   date: string;
 };
 
-type ExpenseWrapperProps = {
+type ExpensewrapperProps = {
   Expenses: Expense[];
   setExpenses: React.Dispatch<React.SetStateAction<Expense[]>>;
+  handleDelete: (id: number) => void;
 };
-export function ExpenseWrapper({ setExpenses, Expenses }: ExpenseWrapperProps) {
+
+export function Expensewrapper({
+  Expenses,
+  setExpenses,
+  handleDelete,
+}: ExpensewrapperProps) {
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseSource, setExpenseSource] = useState("");
   const [expenseDate, setExpenseDate] = useState("");
@@ -35,6 +43,7 @@ export function ExpenseWrapper({ setExpenses, Expenses }: ExpenseWrapperProps) {
   const handleExpenseSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newExpense: Expense = {
+      id: Date.now(),
       source: expenseSource,
       amount: Number(expenseAmount),
       date: expenseDate,
@@ -50,17 +59,7 @@ export function ExpenseWrapper({ setExpenses, Expenses }: ExpenseWrapperProps) {
         handleChangeDate={handleExpenseChangeDate}
         handleSubmit={handleExpenseSubmit}
       />
-      <ul>
-        {Expenses.map((expense) => {
-          return (
-            <li>
-              <p>{expense.source}</p>
-              <p>{expense.amount}</p>
-              <p>{expense.date}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <ListItems items={Expenses} handleDelete={handleDelete} />
     </>
   );
 }

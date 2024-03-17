@@ -1,7 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Incomeform from "./Incomeform";
+import { ListItems } from "./ListItems";
 
 export type Income = {
+  id: number;
+
   source: string;
   amount: number;
   date: string;
@@ -10,16 +13,20 @@ export type Income = {
 type IncomewrapperProps = {
   setIncomes: React.Dispatch<React.SetStateAction<Income[]>>;
   Incomes: Income[];
+  handleDelete: (id: number) => void;
 };
 
-export function Incomewrapper({ setIncomes, Incomes }: IncomewrapperProps) {
+export function Incomewrapper({
+  setIncomes,
+  Incomes,
+  handleDelete,
+}: IncomewrapperProps) {
   const [amount, setAmount] = useState("");
   const [source, setSource] = useState("");
   const [date, setDate] = useState("");
 
   const handleChangeSource = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("chaning...", e.target.value);
-
     setSource(e.target.value);
   };
 
@@ -34,12 +41,14 @@ export function Incomewrapper({ setIncomes, Incomes }: IncomewrapperProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newIncome: Income = {
+      id: Date.now(),
       source: source,
       amount: Number(amount),
       date: date,
     };
     setIncomes([...Incomes, newIncome]);
   };
+
   return (
     <>
       <Incomeform
@@ -48,17 +57,7 @@ export function Incomewrapper({ setIncomes, Incomes }: IncomewrapperProps) {
         handleChangeDate={handleChangeDate}
         handleSubmit={handleSubmit}
       />
-      <ul>
-        {Incomes.map((income) => {
-          return (
-            <li>
-              <p>{income.source}</p>
-              <p>{income.amount}</p>
-              <p>{income.date}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <ListItems items={Incomes} handleDelete={handleDelete} />
     </>
   );
 }
